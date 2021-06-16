@@ -12,11 +12,13 @@ Applying Deep Learning to fingerprint identification is nothing new. [TODO: cite
 
 # Auto encoder architecture
 
-[misschien mentionen dat een dense autoencoder niet werkte? Misschien ook niet want je had dat nog niet met de 32x32 fingerprints geprobeerd.]
-
 After some failed attempts, we decided to keep our architecture choice simple, and use a standard autoencoder implemented by pytorch lightning bolt.
 
-## [Section on resnet blocks as these are used in the autoencoder]
+## Resnet blocks
+
+The autoencoder uses resnet blocks in both the en-and decoder.
+
+TODO: Write short section on resnets
 
 
 
@@ -31,18 +33,16 @@ When scaling up, we have tried using a larger resnet block in between each downs
 We have also tried running the model for more epochs than the early stopping limit we chose. It is noteworthy that when we did this, the 96x96 fingerprints seemed to get more detailed, but the validation loss increased when the model trained for longer. The details that appeared in the reconstructions this way were also not correct when compared to the true images. A sample of this behaviour can be seen in figure \ref{fig overfitting 9696}.
 
 \figure{fig overfitting 9696}
-With early stopping
 
-When continuing to train more epochs
+TODO: insert figure showing overfitting on 96x96 fingerprints.
 
-[TODO: add true image]
 \endfigure{}
 
 Effects of different loss functions:
 
 We first tried the MSE loss function. As we were not satisfied with the reconstructions, they looked blurry, while our fingerprint samples have sharp edges, we experimented with different loss functions. We tried MSE-loss, BCE loss, and L1-loss. In addition we also tried BCE + L1, and MSE + L1. The results of experimenting with different loss functions can be seen below:
 
-[TODO: create plot with results]
+TODO: create plot with results
 
 Effect of the latent dimension
 
@@ -60,10 +60,13 @@ In this section we show our results of using different latent space sizes. This 
 
 *Table2: Reconstruction losses for different latent dimensions with BCE-loss*
 
+![latdim_mse](https://user-images.githubusercontent.com/7264894/122271731-082b8c80-cee0-11eb-9790-6e891192c3a6.png "latent dim: mse loss")
 
-Figure 1: MSE loss: reconstructions with latent dimensions 8, 16, 32, 64, 128, 256, 512. Rightmost column is true fingerprint
+*Figure 1: MSE loss: reconstructions with latent dimensions 8, 16, 32, 64, 128, 256, 512. Rightmost column is true fingerprint*
 
-Figure 2: BCE-loss: reconstructions with latent dimensions 8, 16, 32, 64, 128, 256, 512. Rightmost column is true fingerprint
+![latdim_bce](https://user-images.githubusercontent.com/7264894/122271812-209ba700-cee0-11eb-9c60-e7a892c70e87.png)
+
+*Figure 2: BCE-loss: reconstructions with latent dimensions 8, 16, 32, 64, 128, 256, 512. Rightmost column is true fingerprint*
 
 The figures and plots are shown for the epoch with the best validation loss in each run. Each run was done for a maximum of 500 epochs. The default resnet18 encoder block of the AutoEncoder model was used.
 
