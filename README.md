@@ -2,6 +2,7 @@
 title: SOCOfing autoencoders
 ---
 
+Note: work in progress
 
 # Introduction
 In this blogpost we compress fingerprints from the Sokoto Coventry Fingerprint Dataset (SOCOfing) to a 1-Dimensional vector space using an [AutoEncoder (AE)] (https://pytorch-lightning-bolts.readthedocs.io/en/latest/autoencoders.html). Compressing fingerprints this way has multiple benefits. For one, it can reduce the size of databases drastically. Two, damaged fingerprints may be repaired through the Encoder Decoder process. Lastly, 1-D fingerprint representation may open up new possibilities in fingerprint matching, although we do not look at this problem in our blogpost.
@@ -78,9 +79,12 @@ For the BCE loss, the run with 32 latent dimensions obtained the lowest validati
 
 Our original goal was to see if fingerprints can be compressed and how far. However, because we were unable to create a converging model for entire fingerprints (96*96), we were unable to test if a deterministic dactyloscopic algorithm could match the recreated fingerprints to their original version. We can however inspect the 32*32 patches with our limited knowledge of dactyloscopy and identify at least some rough patterns. Firstly, we see that even though some reconstructions come close, details are not exactly matching. We have some concern for saving fingerprints this way and using it for identification, as reconstructions are only approximations of real fingerprints. 
 
-Second, it seems that the AE network tries very hard to restore noisy images. See Figure.
- 
-Left: Reconstructed, Right: Original
+Second, it seems that the AE network tries very hard to restore noisy images. See Figure:
+
+<img width="66" src="https://user-images.githubusercontent.com/7264894/122272345-bc2d1780-cee0-11eb-8724-c4eec1a02200.png">
+
+*Left: Reconstructed, Right: Original*
+
 It seems like the noisier the image the harder time the AE has to recreate the original, and somehow tries to return clean patterns. This pattern of Deep Learning models not liking noise has some supporting evidence found in scientific literature. [https://arxiv.org/abs/1711.10925]
 
 In the future we would like to find a way to make entire fingerprints reconstructable and testing to see if dactyloscopy can match recreations, or to see if a dactyloscopy expert can match patches. Additionally, seeing if different instances of the same fingerprint can be mapped to roughly the same 1-Dimensional vector representation.
