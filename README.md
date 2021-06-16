@@ -88,3 +88,9 @@ Second, it seems that the AE network tries very hard to restore noisy images. Se
 It seems like the noisier the image the harder time the AE has to recreate the original, and somehow tries to return clean patterns. This pattern of Deep Learning models not liking noise has some supporting evidence found in scientific literature. [https://arxiv.org/abs/1711.10925]
 
 In the future we would like to find a way to make entire fingerprints reconstructable and testing to see if dactyloscopy can match recreations, or to see if a dactyloscopy expert can match patches. Additionally, seeing if different instances of the same fingerprint can be mapped to roughly the same 1-Dimensional vector representation.
+
+
+{% figure [caption:"Caption (markdown)"] [class:"class1 class2"] %}
+A Test figure:
+![val_x_hat_15](https://user-images.githubusercontent.com/7264894/122274006-60fc2480-cee2-11eb-9342-605a645843db.png)
+{% endfigure %}
