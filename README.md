@@ -38,13 +38,13 @@ TODO: insert figure showing overfitting on 96x96 fingerprints.
 
 \endfigure{}
 
-Effects of different loss functions:
+# Effects of different loss functions:
 
 We first tried the MSE loss function. As we were not satisfied with the reconstructions, they looked blurry, while our fingerprint samples have sharp edges, we experimented with different loss functions. We tried MSE-loss, BCE loss, and L1-loss. In addition we also tried BCE + L1, and MSE + L1. The results of experimenting with different loss functions can be seen below:
 
 TODO: create plot with results
 
-Effect of the latent dimension
+# Effect of number of latent dimensions
 
 In this section we show our results of using different latent space sizes. This is at the core of our project, as we set out to find out how much fingerprints could be compressed using autoencoders. As we were unable to get the 96x96 fingerprints to work, we instead focused on the 32x32 center crops. We will show the effect of different latent space sizes qualitatively by showing reconstructions for each latent space size, as well as quantitatively by showing the average reconstruction losses we obtained.
 
@@ -73,3 +73,14 @@ The figures and plots are shown for the epoch with the best validation loss in e
 From the tables you can see that the lowest validation losses were obtained for a latent space of size 128 for mean squared error loss, and a latent space size of 64 for the binary cross entropy loss. For the MSE loss, the reconstructions look blurry when using a small latent space. When increasing the number of latent dimensions, the reconstructions increase sharpness. Some, e.g. the fourth row, seem to continue to increase in the amount of detail, but when comparing to the true fingerprints (rightmost column) it can be seen that these details are wrong. This is in line with the validation loss increasing again after 128 latent dimensions.
 
 For the BCE loss, the run with 32 latent dimensions obtained the lowest validation loss. However, when looking at the reconstructions, they seem generally worse compared to the autoencoder trained with the MSE loss. Where the MSE loss has relatively consistent results, the BCE autoencoder seems to encode some fingerprints very well, while others are plagued by large patches of black.
+
+# Discussion and Conclusion
+
+Our original goal was to see if fingerprints can be compressed and how far. However, because we were unable to create a converging model for entire fingerprints (96*96), we were unable to test if a deterministic dactyloscopic algorithm could match the recreated fingerprints to their original version. We can however inspect the 32*32 patches with our limited knowledge of dactyloscopy and identify at least some rough patterns. Firstly, we see that even though some reconstructions come close, details are not exactly matching. We have some concern for saving fingerprints this way and using it for identification, as reconstructions are only approximations of real fingerprints. 
+
+Second, it seems that the AE network tries very hard to restore noisy images. See Figure.
+ 
+Left: Reconstructed, Right: Original
+It seems like the noisier the image the harder time the AE has to recreate the original, and somehow tries to return clean patterns. This pattern of Deep Learning models not liking noise has some supporting evidence found in scientific literature. [https://arxiv.org/abs/1711.10925]
+
+In the future we would like to find a way to make entire fingerprints reconstructable and testing to see if dactyloscopy can match recreations, or to see if a dactyloscopy expert can match patches. Additionally, seeing if different instances of the same fingerprint can be mapped to roughly the same 1-Dimensional vector representation.
