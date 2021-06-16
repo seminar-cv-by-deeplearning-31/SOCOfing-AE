@@ -3,3 +3,6 @@ include:
   - README.md
 github:
   is_project_page: false
+
+plugins:
+  - jekyll-figure
