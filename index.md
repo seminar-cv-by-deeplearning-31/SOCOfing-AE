@@ -40,7 +40,7 @@ We have also tried running the model for more epochs than the early stopping lim
 <img height="320" src="https://user-images.githubusercontent.com/7264894/122403774-ecc38e80-cf7e-11eb-9df3-df04b952435c.png">
 <img height="320" src="https://user-images.githubusercontent.com/7264894/122403794-ee8d5200-cf7e-11eb-9493-ce11531d28e5.png">
 
-Figure 2: Plot of training and validation losses for 96x96 images
+Figure 2: Training and validation losses for a typical run on 96x96 images
 
 These plots were created using the resnet50 model with 2048 latent dimensions. Similar behaviour was found for the resnet18 model, as well as with a smaller latent space of size 512.
 
