@@ -33,12 +33,13 @@ When scaling up, we have tried using a larger resnet block in between each downs
 
 We have also tried running the model for more epochs than the early stopping limit we chose. It is noteworthy that when we did this, the 96x96 fingerprints seemed to get more detailed, but the validation loss increased when the model trained for longer. The details that appeared in the reconstructions this way were also not correct when compared to the true images. A sample of this behaviour can be seen in in the figure below:
 
-*![2048_epochs_with_first](https://user-images.githubusercontent.com/7264894/122401780-33b08480-cf7d-11eb-9ec7-a2cff91db3bb.png)
+<img height="320" src="https://user-images.githubusercontent.com/7264894/122401780-33b08480-cf7d-11eb-9ec7-a2cff91db3bb.png">
 
-Figure 1: Showing overfitting on 96x96 images. Columns show epoch 1, best epoch w.r.t validation loss, last epoch. Last column is the true fingerprint*
+*Figure 1: Showing overfitting on 96x96 images. Columns show epoch 1, epoch with best validation loss, last epoch. Last column is the true fingerprint*
 
-![2048_train_loss](https://user-images.githubusercontent.com/7264894/122403774-ecc38e80-cf7e-11eb-9df3-df04b952435c.png)
-![W B Chart 17_06_2021, 15_14_55](https://user-images.githubusercontent.com/7264894/122403794-ee8d5200-cf7e-11eb-9493-ce11531d28e5.png)
+<img height="320" src="https://user-images.githubusercontent.com/7264894/122403774-ecc38e80-cf7e-11eb-9df3-df04b952435c.png">
+<img height="320" src="https://user-images.githubusercontent.com/7264894/122403794-ee8d5200-cf7e-11eb-9493-ce11531d28e5.png">
+
 
 Figure 2: Plot of training and validation losses for 96x96 images
 
