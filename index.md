@@ -31,7 +31,7 @@ It seems that autoencoder architectures need to be changed considerably when sca
 
 When scaling up, we have tried using a larger resnet block in between each downsampling layer, which also results in a 4 times wider output vector. This however did not result in better reconstructions when trained for a similar amount of epochs as the resnet18 model. We hypothesize that the reconstructions might improve, when instead of using a larger resnet block, more downsampling sampling layers are used. Due to time constraints we were unable to test this.
 
-We have also tried running the model for more epochs than the early stopping limit we chose. It is noteworthy that when we did this, the 96x96 fingerprints seemed to get more detailed, but the validation loss increased when the model trained for longer. The details that appeared in the reconstructions this way were also not correct when compared to the true images. A sample of this behaviour can be seen in in the figure below:
+We have also tried running the model for more epochs than the early stopping limit we chose. It is noteworthy that when we did this, the 96x96 fingerprints seemed to get more detailed, but the validation loss increased when the model trained for longer. The details that appeared in the reconstructions this way were also not correct when compared to the true images. A example of this behaviour can be seen in in the figures below:
 
 <img height="320" src="https://user-images.githubusercontent.com/7264894/122401780-33b08480-cf7d-11eb-9ec7-a2cff91db3bb.png">
 
@@ -40,8 +40,9 @@ We have also tried running the model for more epochs than the early stopping lim
 <img height="320" src="https://user-images.githubusercontent.com/7264894/122403774-ecc38e80-cf7e-11eb-9df3-df04b952435c.png">
 <img height="320" src="https://user-images.githubusercontent.com/7264894/122403794-ee8d5200-cf7e-11eb-9493-ce11531d28e5.png">
 
-
 Figure 2: Plot of training and validation losses for 96x96 images
+
+These plots were created using the resnet50 model with 2048 latent dimensions. Similar behaviour was found for the resnet18 model, as well as with a smaller latent space of size 512.
 
 # Effects of different loss functions:
 
