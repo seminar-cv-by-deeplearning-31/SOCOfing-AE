@@ -43,7 +43,8 @@ TODO: insert figure showing overfitting on 96x96 fingerprints.
 
 We first tried the MSE loss function. As we were not satisfied with the reconstructions, they looked blurry, while our fingerprint samples have sharp edges, we experimented with different loss functions. We tried MSE-loss, BCE loss, and L1-loss. In addition we also tried BCE + L1, and MSE + L1. The results of experimenting with different loss functions can be seen below:
 
-TODO: create plot with results
+![lossfunexp](https://user-images.githubusercontent.com/7264894/122392796-7f126500-cf74-11eb-86e7-e08634f8d1c1.png)
+*Figure 1: reconstructions with: MSE-loss, MSE + L1 loss, BCE-loss, BCE+L1-loss, L1-loss. Last column is true fingerprint*
 
 # Effect of number of latent dimensions
 
@@ -63,11 +64,11 @@ In this section we show our results of using different latent space sizes. This 
 
 ![latdim_mse](https://user-images.githubusercontent.com/7264894/122271731-082b8c80-cee0-11eb-9790-6e891192c3a6.png "latent dim: mse loss")
 
-*Figure 1: MSE loss: reconstructions with latent dimensions 8, 16, 32, 64, 128, 256, 512. Rightmost column is true fingerprint*
+*Figure 2: MSE loss: reconstructions with latent dimensions 8, 16, 32, 64, 128, 256, 512. Rightmost column is true fingerprint*
 
 ![latdim_bce](https://user-images.githubusercontent.com/7264894/122271812-209ba700-cee0-11eb-9c60-e7a892c70e87.png)
 
-*Figure 2: BCE-loss: reconstructions with latent dimensions 8, 16, 32, 64, 128, 256, 512. Rightmost column is true fingerprint*
+*Figure 3: BCE-loss: reconstructions with latent dimensions 8, 16, 32, 64, 128, 256, 512. Rightmost column is true fingerprint*
 
 The figures and plots are shown for the epoch with the best validation loss in each run. Each run was done for a maximum of 500 epochs. The default resnet18 encoder block of the AutoEncoder model was used.
 
@@ -88,9 +89,3 @@ Second, it seems that the AE network tries very hard to restore noisy images. Se
 It seems like the noisier the image the harder time the AE has to recreate the original, and somehow tries to return clean patterns. This pattern of Deep Learning models not liking noise has some supporting evidence found in scientific literature. [https://arxiv.org/abs/1711.10925]
 
 In the future we would like to find a way to make entire fingerprints reconstructable and testing to see if dactyloscopy can match recreations, or to see if a dactyloscopy expert can match patches. Additionally, seeing if different instances of the same fingerprint can be mapped to roughly the same 1-Dimensional vector representation.
-
-
-{% figure [caption:"Caption (markdown)"] [class:"class1 class2"] %}
-A Test figure:
-![val_x_hat_15](https://user-images.githubusercontent.com/7264894/122274006-60fc2480-cee2-11eb-9342-605a645843db.png)
-{% endfigure %}
