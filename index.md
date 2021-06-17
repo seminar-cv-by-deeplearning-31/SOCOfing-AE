@@ -33,11 +33,14 @@ When scaling up, we have tried using a larger resnet block in between each downs
 
 We have also tried running the model for more epochs than the early stopping limit we chose. It is noteworthy that when we did this, the 96x96 fingerprints seemed to get more detailed, but the validation loss increased when the model trained for longer. The details that appeared in the reconstructions this way were also not correct when compared to the true images. A sample of this behaviour can be seen in in the figure below:
 
-\figure{fig overfitting 9696}
+*![2048_epochs_with_first](https://user-images.githubusercontent.com/7264894/122401780-33b08480-cf7d-11eb-9ec7-a2cff91db3bb.png)
 
-TODO: insert figure showing overfitting on 96x96 fingerprints.
+Figure 1: Showing overfitting on 96x96 images. Columns show epoch 1, best epoch w.r.t validation loss, last epoch. Last column is the true fingerprint*
 
-\endfigure{}
+![2048_train_loss](https://user-images.githubusercontent.com/7264894/122403774-ecc38e80-cf7e-11eb-9df3-df04b952435c.png)
+![W B Chart 17_06_2021, 15_14_55](https://user-images.githubusercontent.com/7264894/122403794-ee8d5200-cf7e-11eb-9493-ce11531d28e5.png)
+
+Figure 2: Plot of training and validation losses for 96x96 images
 
 # Effects of different loss functions:
 
@@ -45,7 +48,7 @@ We first tried the MSE loss function. As we were not satisfied with the reconstr
 
 ![lossfunexp](https://user-images.githubusercontent.com/7264894/122392796-7f126500-cf74-11eb-86e7-e08634f8d1c1.png)
 
-*Figure 1: reconstructions with: MSE-loss, MSE + L1 loss, BCE-loss, BCE+L1-loss, L1-loss. Last column is true fingerprint*
+*Figure 3: reconstructions with: MSE-loss, MSE + L1 loss, BCE-loss, BCE+L1-loss, L1-loss. Last column is true fingerprint*
 
 # Effect of number of latent dimensions
 
@@ -65,11 +68,11 @@ In this section we show our results of using different latent space sizes. This 
 
 ![latdim_mse](https://user-images.githubusercontent.com/7264894/122271731-082b8c80-cee0-11eb-9790-6e891192c3a6.png "latent dim: mse loss")
 
-*Figure 2: MSE loss: reconstructions with latent dimensions 8, 16, 32, 64, 128, 256, 512. Rightmost column is true fingerprint*
+*Figure 4: MSE loss: reconstructions with latent dimensions 8, 16, 32, 64, 128, 256, 512. Rightmost column is true fingerprint*
 
 ![latdim_bce](https://user-images.githubusercontent.com/7264894/122271812-209ba700-cee0-11eb-9c60-e7a892c70e87.png)
 
-*Figure 3: BCE-loss: reconstructions with latent dimensions 8, 16, 32, 64, 128, 256, 512. Rightmost column is true fingerprint*
+*Figure 5: BCE-loss: reconstructions with latent dimensions 8, 16, 32, 64, 128, 256, 512. Rightmost column is true fingerprint*
 
 The figures and plots are shown for the epoch with the best validation loss in each run. Each run was done for a maximum of 500 epochs. The default resnet18 encoder block of the AutoEncoder model was used.
 
