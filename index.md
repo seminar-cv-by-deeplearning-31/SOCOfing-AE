@@ -5,7 +5,7 @@ title: SOCOfing autoencoders
 Note: work in progress
 
 # Introduction
-In this blogpost we compress fingerprints from the Sokoto Coventry Fingerprint Dataset (SOCOfing) to a 1-Dimensional vector space using an [AutoEncoder (AE)] (https://pytorch-lightning-bolts.readthedocs.io/en/latest/autoencoders.html). Compressing fingerprints this way has multiple benefits. For one, it can reduce the size of databases drastically. Two, damaged fingerprints may be repaired through the Encoder Decoder process. Lastly, 1-D fingerprint representation may open up new possibilities in fingerprint matching, although we do not look at this problem in our blogpost.
+In this blogpost we compress fingerprints from the Sokoto Coventry Fingerprint Dataset (SOCOfing) to a 1-Dimensional vector space using an [AutoEncoder (AE)](https://pytorch-lightning-bolts.readthedocs.io/en/latest/autoencoders.html). Compressing fingerprints this way has multiple benefits. For one, it canmay reduce the size of databases drastically. Imagine what a 50% compression rate would mean on a fingerprint database of the entire world population. Two, damaged fingerprints may be repaired through the Encoder Decoder process. Lastly, 1-D fingerprint representation may open up new possibilities in fingerprint matching based on 1-D vectors, although we do not look at this problem in our blogpost.
 
 Fingerprint grouping and classification, dactyloscopy, was invented at the end of the 19th century by Juan Vucetich, famously being used as evidence for a Argentinian Police case for the first time in 1892. Since then, the practice has been widely adopted for identification. Classically, the automation of dactyloscopy is done through a series of handcrafted feature extraction algorithms that perform roughly the same tasks as dactyloscopy by hand. 
 
@@ -31,7 +31,7 @@ It seems that autoencoder architectures need to be changed considerably when sca
 
 When scaling up, we have tried using a larger resnet block in between each downsampling layer, which also results in a 4 times wider output vector. This however did not result in better reconstructions when trained for a similar amount of epochs as the resnet18 model. We hypothesize that the reconstructions might improve, when instead of using a larger resnet block, more downsampling sampling layers are used. Due to time constraints we were unable to test this.
 
-We have also tried running the model for more epochs than the early stopping limit we chose. It is noteworthy that when we did this, the 96x96 fingerprints seemed to get more detailed, but the validation loss increased when the model trained for longer. The details that appeared in the reconstructions this way were also not correct when compared to the true images. A sample of this behaviour can be seen in figure \ref{fig overfitting 9696}.
+We have also tried running the model for more epochs than the early stopping limit we chose. It is noteworthy that when we did this, the 96x96 fingerprints seemed to get more detailed, but the validation loss increased when the model trained for longer. The details that appeared in the reconstructions this way were also not correct when compared to the true images. A sample of this behaviour can be seen in in the figure below:
 
 \figure{fig overfitting 9696}
 
