@@ -39,8 +39,8 @@ We have also tried running the model for more epochs than the early stopping lim
 
 *Figure 1: Showing overfitting on 96x96 images. Columns show epoch 1, epoch with best validation loss, last epoch. Last column is the true fingerprint*
 
-<img height="320" src="https://user-images.githubusercontent.com/7264894/122403774-ecc38e80-cf7e-11eb-9df3-df04b952435c.png">
-<img height="320" src="https://user-images.githubusercontent.com/7264894/122403794-ee8d5200-cf7e-11eb-9493-ce11531d28e5.png">
+<img height="300" src="https://user-images.githubusercontent.com/7264894/122403774-ecc38e80-cf7e-11eb-9df3-df04b952435c.png">
+<img height="300" src="https://user-images.githubusercontent.com/7264894/122403794-ee8d5200-cf7e-11eb-9493-ce11531d28e5.png">
 
 Figure 2: Training and validation losses for a typical run on 96x96 images
 
