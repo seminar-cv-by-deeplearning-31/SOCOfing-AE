@@ -11,7 +11,7 @@ Fingerprint grouping and classification, dactyloscopy, was invented at the end o
 
 Applying Deep Learning to fingerprint identification is nothing new. [TODO: cite ieee 7952518](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7952518) uses a Deep Convolutional Neural Net to extract high quality level features such as pores from fingerprints. [TODO: cite ieee 7852722](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7852722) uses a CNN to identify damaged fingerprints. [CITE 6996300](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=6996300) uses a denoising AE to extract minutiae, features from fingerprints identified in the dactyloscopic process. More recently [cite: 9316670](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=9316670) uses AE to detect anomelies in malicious fingerprint authentication attempts. To our knowledge, no one has actively tried to compress the representation of fingerprints using AE.
 
-# Auto encoder architecture
+# Autoencoder architecture
 
 After some failed attempts, we decided to keep our architecture choice simple, and use a standard autoencoder implemented by pytorch lightning bolt.
 
