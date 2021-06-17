@@ -44,6 +44,7 @@ TODO: insert figure showing overfitting on 96x96 fingerprints.
 We first tried the MSE loss function. As we were not satisfied with the reconstructions, they looked blurry, while our fingerprint samples have sharp edges, we experimented with different loss functions. We tried MSE-loss, BCE loss, and L1-loss. In addition we also tried BCE + L1, and MSE + L1. The results of experimenting with different loss functions can be seen below:
 
 ![lossfunexp](https://user-images.githubusercontent.com/7264894/122392796-7f126500-cf74-11eb-86e7-e08634f8d1c1.png)
+
 *Figure 1: reconstructions with: MSE-loss, MSE + L1 loss, BCE-loss, BCE+L1-loss, L1-loss. Last column is true fingerprint*
 
 # Effect of number of latent dimensions
