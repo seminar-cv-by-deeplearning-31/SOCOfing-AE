@@ -64,13 +64,13 @@ In this section we show our results of using different latent space sizes. This 
 |:---------|----------:|----------:|----------:|--------:|----------:|----------:|----------:|
 | mse_loss | 0.0981035 | 0.0741007 | 0.0578159 | 0.04948 | 0.0467336 | 0.0484134 | 0.0503231 |
 
-*Table1: Reconstruction losses for different latent dimensions with MSE-loss*
+*Table 1: Reconstruction losses for different latent dimensions with MSE-loss*
 
 |          |         8 |        16 |        32 |      64 |       128 |       256 |       512 |
 |:---------------------------------|---------:|---------:|---------:|---------:|---------:|---------:|---------:|
 | binary_cross_entropy_with_logits | 0.550273 | 0.505601 | 0.458729 | 0.469356 | 0.477316 | 0.470364 | 0.469483 |
 
-*Table2: Reconstruction losses for different latent dimensions with BCE-loss*
+*Table 2: Reconstruction losses for different latent dimensions with BCE-loss*
 
 ![latdim_mse](https://user-images.githubusercontent.com/7264894/122271731-082b8c80-cee0-11eb-9790-6e891192c3a6.png "latent dim: mse loss")
 
