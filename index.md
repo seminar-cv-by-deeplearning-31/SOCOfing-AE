@@ -13,6 +13,8 @@ Applying Deep Learning to fingerprint identification is nothing new. [[1]](https
 
 After some failed attempts, we decided to keep our architecture choice simple, and use a standard autoencoder implemented by [pytorch lightning bolt](https://pytorch-lightning-bolts.readthedocs.io/en/latest/autoencoders.html). This autoencoder makes use of resnet blocks, which is a commonly used architecture in deep learning. The autoencoder implementation provides two sizes of the resnet models. Most of the experiments use the resnet18 variant, as this variant needs a fraction of the compute of the resent50 variant. Some of the 96x96 input sizes were done with the resnet50 model.
 
+We make two modifications to the lightning bolt Autoencoder. The number of image channels is changed from 3 to 1 to support the grayscale fingerprints as opposed to rgb images. In addition to that we override the training step to be able to change the loss function.
+
 # Failed: 96x96 fingerprints
 
 ## Training
