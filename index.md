@@ -102,12 +102,12 @@ In the future we would like to find a way to make entire fingerprints reconstruc
 
 # References
 
-[^1]: H. Su, K. Chen, W. J. Wong and S. Lai, "A deep learning approach towards pore extraction for high-resolution fingerprint recognition," 2017 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP), 2017, pp. 2057-2061, doi: 10.1109/ICASSP.2017.7952518.
+[1]: H. Su, K. Chen, W. J. Wong and S. Lai, "A deep learning approach towards pore extraction for high-resolution fingerprint recognition," 2017 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP), 2017, pp. 2057-2061, doi: 10.1109/ICASSP.2017.7952518.
 
-[^2]: Y. Wang, Z. Wu and J. Zhang, "Damaged fingerprint classification by Deep Learning with fuzzy feature points," 2016 9th International Congress on Image and Signal Processing, BioMedical Engineering and Informatics (CISP-BMEI), 2016, pp. 280-285, doi: 10.1109/CISP-BMEI.2016.7852722.
+[2]: Y. Wang, Z. Wu and J. Zhang, "Damaged fingerprint classification by Deep Learning with fuzzy feature points," 2016 9th International Congress on Image and Signal Processing, BioMedical Engineering and Informatics (CISP-BMEI), 2016, pp. 280-285, doi: 10.1109/CISP-BMEI.2016.7852722.
 
-[^3]: A. Sankaran, P. Pandey, M. Vatsa and R. Singh, "On latent fingerprint minutiae extraction using stacked denoising sparse AutoEncoders," IEEE International Joint Conference on Biometrics, 2014, pp. 1-7, doi: 10.1109/BTAS.2014.6996300.
+[3]: A. Sankaran, P. Pandey, M. Vatsa and R. Singh, "On latent fingerprint minutiae extraction using stacked denoising sparse AutoEncoders," IEEE International Joint Conference on Biometrics, 2014, pp. 1-7, doi: 10.1109/BTAS.2014.6996300.
 
-[^4]: J. Kolberg, M. Grimmer, M. Gomez-Barrero and C. Busch, "Anomaly Detection With Convolutional Autoencoders for Fingerprint Presentation Attack Detection," in IEEE Transactions on Biometrics, Behavior, and Identity Science, vol. 3, no. 2, pp. 190-202, April 2021, doi: 10.1109/TBIOM.2021.3050036.
+[4]: J. Kolberg, M. Grimmer, M. Gomez-Barrero and C. Busch, "Anomaly Detection With Convolutional Autoencoders for Fingerprint Presentation Attack Detection," in IEEE Transactions on Biometrics, Behavior, and Identity Science, vol. 3, no. 2, pp. 190-202, April 2021, doi: 10.1109/TBIOM.2021.3050036.
 
-[^5]: Ulyanov, Dmitry, et al, "Deep Image Prior," International Journal of Computer Vision, vol. 128, no. 7, July 2020, pp. 1867–88. arXiv.org, doi:10.1007/s11263-020-01303-4.
+[5]: Ulyanov, Dmitry, et al, "Deep Image Prior," International Journal of Computer Vision, vol. 128, no. 7, July 2020, pp. 1867–88. arXiv.org, doi:10.1007/s11263-020-01303-4.
