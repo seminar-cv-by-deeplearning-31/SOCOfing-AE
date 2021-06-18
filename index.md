@@ -21,7 +21,7 @@ We make two modifications to the lightning bolt Autoencoder. The number of image
 
 ## Training
 
-In order to match fingerprints with a deterministic algorithm such as [github.com/kjanko/python-fingerprint-recognition](https://github.com/kjanko/python-fingerprint-recognition) we need at least a full image of a fingerprint. We use the same ResNet-18 network as in previous experiments, increase the size of the input image and decrease the input channels to 1. We try two different loss functions: MSE-loss and BCE with logits with lr = 0.01, 0.001, 0.0001. In all 6 cases we do not find a valid reconstruction. See results. We suspect that the increased size of the image and also the additional white around the fingerprint make this a much harder problem than simply 32*32 square fingerprints. 
+In order to match fingerprints with a deterministic algorithm such as [kjanko/python-fingerprint-recognition](https://github.com/kjanko/python-fingerprint-recognition) we need at least a full image of a fingerprint. We use the same ResNet-18 network as in previous experiments, increase the size of the input image and decrease the input channels to 1. We try two different loss functions: MSE-loss and BCE with logits with lr = 0.01, 0.001, 0.0001. In all 6 cases we do not find a valid reconstruction. See results. We suspect that the increased size of the image and also the additional white around the fingerprint make this a much harder problem than simply 32*32 square fingerprints. 
 
 It seems that autoencoder architectures need to be changed considerably when scaling to larger image sizes. The encoder architecture we used consists of 4 layers with each layer being a resnet block followed by a downsampling layer. After these 4 layers, an adaptive average pool layer pools the feature maps to a vector number of 1x1 features.
 
@@ -41,7 +41,7 @@ Figure 2: Training and validation losses for a typical run on 96x96 images
 These plots were created using the resnet50 model with 2048 latent dimensions. Similar behaviour was found for the resnet18 model, as well as with a smaller latent space of size 512.
 
 ## Matching
-Even though we found that training the autoencoder on 96x96 images did not work, we tried to do fingerprint matching on the results. When using a deterministic dactyloscopy algorithm to match both overtrained samples and samples with least validation loss, the algorithm is unable to match the two fingerprints consistently. We use the algorithm found at (https://github.com/kjanko/python-fingerprint-recognition)[https://github.com/kjanko/python-fingerprint-recognition].
+Even though we found that training the autoencoder on 96x96 images did not work, we tried to do fingerprint matching on the results. When using a deterministic dactyloscopy algorithm to match both overtrained samples and samples with least validation loss, the algorithm is unable to match the two fingerprints consistently. We use the algorithm found at [https://github.com/kjanko/python-fingerprint-recognition](https://github.com/kjanko/python-fingerprint-recognition).
 
 <img height="150" src="https://user-images.githubusercontent.com/7264894/122407111-a885bd80-cf81-11eb-89fd-812ccd3bf133.png">
 
