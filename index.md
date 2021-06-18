@@ -9,21 +9,21 @@ In this blogpost we compress fingerprints from the Sokoto Coventry Fingerprint D
 
 Fingerprint grouping and classification, dactyloscopy, was invented at the end of the 19th century by Juan Vucetich, famously being used as evidence for a Argentinian Police case for the first time in 1892. Since then, the practice has been widely adopted for identification. Classically, the automation of dactyloscopy is done through a series of handcrafted feature extraction algorithms that perform roughly the same tasks as dactyloscopy by hand. 
 
-Applying Deep Learning to fingerprint identification is nothing new. [1[^1]](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7952518) uses a Deep Convolutional Neural Net to extract high quality level features such as pores from fingerprints. [2](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7852722) uses a CNN to identify damaged fingerprints. [CITE 6996300](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=6996300) uses a denoising AE to extract minutiae, features from fingerprints identified in the dactyloscopic process. More recently [cite: 9316670](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=9316670) uses AE to detect anomelies in malicious fingerprint authentication attempts. To our knowledge, no one has actively tried to compress the representation of fingerprints using AE.
+Applying Deep Learning to fingerprint identification is nothing new. [1](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7952518) uses a Deep Convolutional Neural Net to extract high quality level features such as pores from fingerprints. [2](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7852722) uses a CNN to identify damaged fingerprints. [3](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=6996300) uses a denoising AE to extract minutiae, features from fingerprints identified in the dactyloscopic process. More recently [4](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=9316670) uses AE to detect anomelies in malicious fingerprint authentication attempts. To our knowledge, no one has actively tried to compress the representation of fingerprints using AE.
 
 # Autoencoder architecture
 
-After some failed attempts, we decided to keep our architecture choice simple, and use a standard autoencoder implemented by pytorch lightning bolt. This autoencoder makes use of resnet blocks, which is a commonly used architecture in deep learning. The autoencoder implementation provides two sizes of the resnet models. Most of the experiments use the resnet18 variant, as this variant needs a fraction of the compute of the resent50 variant. Some of the 96x96 input sizes were done with the resnet50 model.
+After some failed attempts, we decided to keep our architecture choice simple, and use a standard autoencoder implemented by [pytorch lightning bolt](https://pytorch-lightning-bolts.readthedocs.io/en/latest/autoencoders.html). This autoencoder makes use of resnet blocks, which is a commonly used architecture in deep learning. The autoencoder implementation provides two sizes of the resnet models. Most of the experiments use the resnet18 variant, as this variant needs a fraction of the compute of the resent50 variant. Some of the 96x96 input sizes were done with the resnet50 model.
 
 # Failed: 96x96 fingerprints
 
 ## Training
 
-In order to match fingerprints with a deterministic algorithm such as [https://github.com/kjanko/python-fingerprint-recognition] we need at least a full image of a fingerprint. We use the same ResNet-18 network as in previous experiments, increase the size of the input image and decrease the input channels to 1. We try two different loss functions: MSE-loss and BCE with logits with lr = 0.01, 0.001, 0.0001. In all 6 cases we do not find a valid reconstruction. See results. We suspect that the increased size of the image and also the additional white around the fingerprint make this a much harder problem than simply 32*32 square fingerprints. ~~Future works could look at increasing the network size or latent space, as well as different types of pooling and the addition of FC layers.~~
+In order to match fingerprints with a deterministic algorithm such as [https://github.com/kjanko/python-fingerprint-recognition] we need at least a full image of a fingerprint. We use the same ResNet-18 network as in previous experiments, increase the size of the input image and decrease the input channels to 1. We try two different loss functions: MSE-loss and BCE with logits with lr = 0.01, 0.001, 0.0001. In all 6 cases we do not find a valid reconstruction. See results. We suspect that the increased size of the image and also the additional white around the fingerprint make this a much harder problem than simply 32*32 square fingerprints. 
 
-It seems that autoencoder architectures need to be changed considerably when scaling to larger image sizes. The encoder architecture we used consists of [4?] layers with each layer being a resnet block followed by a downsampling layer. After these [4?] layers, an adaptive average pool layer pools the feature maps to a vector number of 1x1 features.
+It seems that autoencoder architectures need to be changed considerably when scaling to larger image sizes. The encoder architecture we used consists of 4 layers with each layer being a resnet block followed by a downsampling layer. After these 4 layers, an adaptive average pool layer pools the feature maps to a vector number of 1x1 features.
 
-When scaling up, we have tried using a larger resnet block in between each downsampling layer, which also results in a 4 times wider output vector. This however did not result in better reconstructions when trained for a similar amount of epochs as the resnet18 model. We hypothesize that the reconstructions might improve, when instead of using a larger resnet block, more downsampling sampling layers are used. Due to time constraints we were unable to test this.
+When scaling up, we have tried using a larger resnet block in between each downsampling layer, which also results in a 4 times wider output vector. This however did not result in better reconstructions when trained for a similar amount of epochs as the resnet18 model. We hypothesize that the reconstructions might improve, when instead of using a larger resnet block, more downsampling sampling layers are used. Due to time constraints we were unable to test this. This is something future work could explore.
 
 We have also tried running the model for more epochs than the early stopping limit we chose. It is noteworthy that when we did this, the 96x96 fingerprints seemed to get more detailed, but the validation loss increased when the model trained for longer. The details that appeared in the reconstructions this way were also not correct when compared to the true images. A example of this behaviour can be seen in in the figures below:
 
@@ -98,8 +98,18 @@ Second, it seems that the AE network tries very hard to restore noisy images. Se
 
 *Left: Reconstructed, Right: Original*
 
-It seems like the noisier the image the harder time the AE has to recreate the original, and somehow tries to return clean patterns. This pattern of Deep Learning models not liking noise has some supporting evidence found in scientific literature. [https://arxiv.org/abs/1711.10925]
+It seems like the noisier the image the harder time the AE has to recreate the original, and somehow tries to return clean patterns. This pattern of Deep Learning models not liking noise has some supporting evidence found in scientific literature [5](https://arxiv.org/abs/1711.10925).
 
 In the future we would like to find a way to make entire fingerprints reconstructable and testing to see if dactyloscopy can match recreations, or to see if a dactyloscopy expert can match patches. Additionally, seeing if different instances of the same fingerprint can be mapped to roughly the same 1-Dimensional vector representation.
 
+# References
+
 [^1]: H. Su, K. Chen, W. J. Wong and S. Lai, "A deep learning approach towards pore extraction for high-resolution fingerprint recognition," 2017 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP), 2017, pp. 2057-2061, doi: 10.1109/ICASSP.2017.7952518.
+
+[^2]: Y. Wang, Z. Wu and J. Zhang, "Damaged fingerprint classification by Deep Learning with fuzzy feature points," 2016 9th International Congress on Image and Signal Processing, BioMedical Engineering and Informatics (CISP-BMEI), 2016, pp. 280-285, doi: 10.1109/CISP-BMEI.2016.7852722.
+
+[^3]: A. Sankaran, P. Pandey, M. Vatsa and R. Singh, "On latent fingerprint minutiae extraction using stacked denoising sparse AutoEncoders," IEEE International Joint Conference on Biometrics, 2014, pp. 1-7, doi: 10.1109/BTAS.2014.6996300.
+
+[^4]: J. Kolberg, M. Grimmer, M. Gomez-Barrero and C. Busch, "Anomaly Detection With Convolutional Autoencoders for Fingerprint Presentation Attack Detection," in IEEE Transactions on Biometrics, Behavior, and Identity Science, vol. 3, no. 2, pp. 190-202, April 2021, doi: 10.1109/TBIOM.2021.3050036.
+
+[^5]: Ulyanov, Dmitry, et al, "Deep Image Prior," International Journal of Computer Vision, vol. 128, no. 7, July 2020, pp. 1867–88. arXiv.org, doi:10.1007/s11263-020-01303-4.
