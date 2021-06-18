@@ -9,19 +9,11 @@ In this blogpost we compress fingerprints from the Sokoto Coventry Fingerprint D
 
 Fingerprint grouping and classification, dactyloscopy, was invented at the end of the 19th century by Juan Vucetich, famously being used as evidence for a Argentinian Police case for the first time in 1892. Since then, the practice has been widely adopted for identification. Classically, the automation of dactyloscopy is done through a series of handcrafted feature extraction algorithms that perform roughly the same tasks as dactyloscopy by hand. 
 
-Applying Deep Learning to fingerprint identification is nothing new. [TODO: cite ieee 7952518](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7952518) uses a Deep Convolutional Neural Net to extract high quality level features such as pores from fingerprints. [TODO: cite ieee 7852722](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7852722) uses a CNN to identify damaged fingerprints. [CITE 6996300](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=6996300) uses a denoising AE to extract minutiae, features from fingerprints identified in the dactyloscopic process. More recently [cite: 9316670](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=9316670) uses AE to detect anomelies in malicious fingerprint authentication attempts. To our knowledge, no one has actively tried to compress the representation of fingerprints using AE.
+Applying Deep Learning to fingerprint identification is nothing new. [1[^1]](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7952518) uses a Deep Convolutional Neural Net to extract high quality level features such as pores from fingerprints. [2](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7852722) uses a CNN to identify damaged fingerprints. [CITE 6996300](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=6996300) uses a denoising AE to extract minutiae, features from fingerprints identified in the dactyloscopic process. More recently [cite: 9316670](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=9316670) uses AE to detect anomelies in malicious fingerprint authentication attempts. To our knowledge, no one has actively tried to compress the representation of fingerprints using AE.
 
 # Autoencoder architecture
 
-After some failed attempts, we decided to keep our architecture choice simple, and use a standard autoencoder implemented by pytorch lightning bolt.
-
-## Resnet blocks
-
-The autoencoder uses resnet blocks in both the en-and decoder.
-
-TODO: Write short section on resnets
-
-
+After some failed attempts, we decided to keep our architecture choice simple, and use a standard autoencoder implemented by pytorch lightning bolt. This autoencoder makes use of resnet blocks, which is a commonly used architecture in deep learning. The autoencoder implementation provides two sizes of the resnet models. Most of the experiments use the resnet18 variant, as this variant needs a fraction of the compute of the resent50 variant. Some of the 96x96 input sizes were done with the resnet50 model.
 
 # Failed: 96x96 fingerprints
 
@@ -109,3 +101,5 @@ Second, it seems that the AE network tries very hard to restore noisy images. Se
 It seems like the noisier the image the harder time the AE has to recreate the original, and somehow tries to return clean patterns. This pattern of Deep Learning models not liking noise has some supporting evidence found in scientific literature. [https://arxiv.org/abs/1711.10925]
 
 In the future we would like to find a way to make entire fingerprints reconstructable and testing to see if dactyloscopy can match recreations, or to see if a dactyloscopy expert can match patches. Additionally, seeing if different instances of the same fingerprint can be mapped to roughly the same 1-Dimensional vector representation.
+
+[^1]: H. Su, K. Chen, W. J. Wong and S. Lai, "A deep learning approach towards pore extraction for high-resolution fingerprint recognition," 2017 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP), 2017, pp. 2057-2061, doi: 10.1109/ICASSP.2017.7952518.
