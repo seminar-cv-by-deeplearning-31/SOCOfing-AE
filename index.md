@@ -2,6 +2,8 @@
 title: SOCOfing autoencoders
 ---
 
+*Authored by: Berend Kam and Emanuel Kuhn*
+
 # Introduction
 In this blogpost we compress fingerprints from the Sokoto Coventry Fingerprint Dataset (SOCOfing) to a 1-Dimensional vector space using an [AutoEncoder (AE)](https://pytorch-lightning-bolts.readthedocs.io/en/latest/autoencoders.html). Compressing fingerprints this way has multiple benefits. For one, it could reduce the size of databases drastically. Imagine what a 50% compression rate would mean on a fingerprint database of the entire world population. Two, damaged fingerprints may be repaired through the Encoder Decoder process. Lastly, 1-D fingerprint representation may open up new possibilities in fingerprint matching based on 1-D vectors, although we do not look at this problem in our blogpost.
 
